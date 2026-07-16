@@ -59,8 +59,17 @@ function HomePage() {
     setSubmitting(true)
 
     try {
-      const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5000'
-      const response = await fetch(${apiBase}/api/contact, {
+      let endpoint
+      if (import.meta.env.VITE_API_URL) {
+        endpoint = `${import.meta.env.VITE_API_URL.replace(/\/$/, '')}/api/contact`
+      } else if (import.meta.env.PROD) {
+        // In Netlify production use the serverless function
+        endpoint = '/.netlify/functions/contact'
+      } else {
+        endpoint = 'http://localhost:5000/api/contact'
+      }
+
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
