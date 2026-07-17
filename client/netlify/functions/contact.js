@@ -38,3 +38,4 @@ export async function handler(event) {
     return { statusCode: 500, body: JSON.stringify({ error: 'Error al enviar el correo.' }) }
   }
 }
+
