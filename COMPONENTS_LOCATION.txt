@@ -1,0 +1,94 @@
+Ubicación de componentes en el proyecto Frapessaurio
+
+1. Títulos
+- client/src/pages/HomePage.jsx
+  - <h1>: "Frapessaurio: café premium con espíritu dinosaurio."
+  - <h2>: "La historia detrás de Frapessaurio", "Productos", "Vive la experiencia Frapessaurio", "Encuéntranos fácilmente", "¿Listo para tu próxima bebida?"
+  - <h3>: "Crear experiencias memorables", "Ser referencia de cafeterías artesanales", "Dirección", "Horario"
+- client/src/components/Footer.jsx
+  - <h3>: "Frapessaurio", "Contacto", "Sigue nuestra aventura"
+- client/src/pages/PrivacyPage.jsx
+  - <h1>: "Aviso de privacidad"
+- client/src/pages/TermsPage.jsx
+  - <h1>: "Términos y condiciones"
+
+2. Listas ordenadas
+- client/src/pages/HomePage.jsx
+  - <ol className="mt-8 list-decimal ..."> en la sección de video/multimedia con pasos del proceso de preparación.
+- client/src/pages/PrivacyPage.jsx
+  - <ol className="mt-8 list-decimal ..."> con las reglas de privacidad.
+
+3. Listas desordenadas
+- client/src/components/Footer.jsx
+  - <ul className="space-y-3 ..."> con la información de contacto.
+- client/src/pages/HomePage.jsx
+  - <ul className="mt-8 space-y-3 ..."> en la sección de mapa con ventajas del local.
+- client/src/pages/TermsPage.jsx
+  - <ul className="mt-8 ..."> con los puntos de términos y condiciones.
+
+4. Secciones
+- client/src/pages/HomePage.jsx
+  - section#inicio
+  - section#nosotros
+  - section#productos
+  - section (misión/visión)
+  - section#galeria
+  - section#testimonios
+  - section#contacto
+  - section (multimedia/video)
+  - section (mapa)
+- client/src/pages/PrivacyPage.jsx
+  - <main> conteniendo aviso de privacidad
+- client/src/pages/TermsPage.jsx
+  - <main> conteniendo términos y condiciones
+
+5. Imágenes
+- client/src/pages/HomePage.jsx
+  - <img> en la sección de "Sobre nosotros".
+  - <img> dentro de cada tarjeta de producto.
+  - <img> en cada tarjeta de testimonio.
+
+6. Iframes
+- client/src/pages/HomePage.jsx
+  - <iframe> de YouTube en la sección multimedia.
+  - <iframe> de Google Maps en la sección de ubicación.
+
+7. Tablas
+- client/src/pages/HomePage.jsx
+  - <table> dentro de la tarjeta de información de contacto/hora en la sección de contacto.
+
+8. Formularios
+- client/src/pages/HomePage.jsx
+  - <form onSubmit={handleSubmit}> con campos: nombre, correo, teléfono y mensaje.
+
+9. Hipervínculos
+- client/src/pages/HomePage.jsx
+  - <a href="#productos">Conoce nuestro menú</a>
+  - <a href="#contacto">Contáctanos</a>
+- client/src/components/Footer.jsx
+  - <a href="https://www.instagram.com">Instagram</a>
+  - <a href="https://www.facebook.com">Facebook</a>
+  - <a href="https://www.google.com/maps">Maps</a>
+  - <a href="/aviso-de-privacidad">Aviso de privacidad</a>
+  - <a href="/terminos">Términos y condiciones</a>
+- client/src/components/Navbar.jsx
+  - enlaces de ancla internas a las secciones del Home.
+
+10. Anclas
+- client/src/pages/HomePage.jsx
+  - id="inicio"
+  - id="nosotros"
+  - id="productos"
+  - id="galeria"
+  - id="testimonios"
+  - id="contacto"
+- client/src/components/Navbar.jsx
+  - enlaces con href="#inicio", href="#nosotros", href="#productos", href="#galeria", href="#testimonios", href="#contacto"
+
+11. Videos
+- client/src/pages/HomePage.jsx
+  - video embebido vía <iframe> de YouTube en la sección multimedia.
+
+12. Mapa interactivo
+- client/src/pages/HomePage.jsx
+  - Google Maps embebido vía <iframe> en la sección de ubicación.
