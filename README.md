@@ -1,33 +1,10 @@
 # Frapessaurio
 
-Cafetería institucional con frontend en React + Vite + Tailwind CSS y backend en Node.js + Express + Nodemailer.
+Cafetería institucional con frontend en React + Vite + Tailwind CSS y backend serverless en Netlify Functions.
 
 ## Estructura del proyecto
 
-- `client/`: Aplicación frontend
-- `server/`: API backend
-
-## Configuración del backend
-
-1. Copia `.env.example` a `.env`
-2. Completa las variables:
-
-```
-PORT=5000
-EMAIL_USER=tu-correo@gmail.com
-EMAIL_PASS=tu-app-password-de-gmail
-EMAIL_TO=arielgalvanjuarez14@gmail.com
-```
-
-> Usa una contraseña de aplicación de Gmail o un SMTP válido. Si usas Gmail, habilita la autenticación en dos pasos y crea una contraseña de aplicación.
-
-3. Instala dependencias y ejecuta el servidor:
-
-```bash
-cd server
-npm install
-npm run dev
-```
+- `client/`: Aplicación frontend y funciones de Netlify
 
 ## Configuración del frontend
 
@@ -38,22 +15,34 @@ cd client
 npm install
 ```
 
-2. Inicia la aplicación:
+2. Construye la aplicación para producción:
 
 ```bash
-npm run dev
+npm run build
 ```
 
-## Despliegue
+3. Publica en Netlify usando la carpeta `client/dist`.
 
-- Frontend: Netlify o Vercel
-- Backend: Render, Railway o Heroku
+## Despliegue en Netlify
+
+- `publish` debe apuntar a `client/dist`
+- `functions` debe apuntar a `client/netlify/functions`
+- Asegúrate de configurar estas variables en Netlify:
+  - `SMTP_HOST`
+  - `SMTP_PORT`
+  - `SMTP_SECURE`
+  - `SMTP_USER`
+  - `SMTP_PASS`
+  - `SMTP_FROM`
+  - `CONTACT_TO`
 
 ## API de contacto
 
-`POST http://localhost:5000/api/contact`
+La función está disponible en:
 
-Body JSON:
+`/.netlify/functions/contact`
+
+El formulario envía un POST JSON con:
 
 ```json
 {
@@ -66,8 +55,6 @@ Body JSON:
 
 ## Notas
 
-- El formulario envía un correo a la dirección especificada en `.env`
-- No se utiliza base de datos
-- Las rutas independientes son:
-  - `/aviso-de-privacidad`
-  - `/terminos`
+- No se requiere backend local.
+- El correo se envía usando `nodemailer` dentro de la función Netlify.
+- El SPA usa un catch-all redirect en `netlify.toml` para que todas las rutas funcionen en el frontend.
