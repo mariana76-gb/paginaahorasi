@@ -9,31 +9,31 @@ import { useState } from 'react'
 import Loader from '../components/Loader'
 
 const productCards = [
-  { title: 'Frappes', description: 'Batidos cremosos con hielo, café y toppings naturales.', price: '$95', image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80' },
-  { title: 'Café Americano', description: 'Aroma intenso con cuerpo tostado para comenzar el día.', price: '$55', image: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80' },
-  { title: 'Latte', description: 'Espuma sedosa y delicado sabor a leche con café espresso.', price: '$75', image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80' },
-  { title: 'Capuccino', description: 'Espuma cremosa con notas de cacao y canela.', price: '$80', image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80' },
-  { title: 'Chocolate', description: 'Chocolate caliente con malvaviscos y encanto relajante.', price: '$70', image: 'https://images.unsplash.com/photo-1521302080-1297c4a07cb8?auto=format&fit=crop&w=800&q=80' },
-  { title: 'Té', description: 'Selección de tés herbales para calmar y reconfortar.', price: '$60', image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80' },
-  { title: 'Pan artesanal', description: 'Recién horneado con ingredientes naturales y sabor auténtico.', price: '$40', image: 'https://images.unsplash.com/photo-1516685018646-54927c094f3b?auto=format&fit=crop&w=800&q=80' },
-  { title: 'Postres', description: 'Caprichos dulces para compartir entre amigos.', price: '$65', image: 'https://images.unsplash.com/photo-1521302080-1297c4a07cb8?auto=format&fit=crop&w=800&q=80' },
+  { title: 'Frappes', description: 'Batidos cremosos con hielo, café y toppings naturales.', price: '$95', image: '/images/product-card.svg' },
+  { title: 'Café Americano', description: 'Aroma intenso con cuerpo tostado para comenzar el día.', price: '$55', image: '/images/product-card.svg' },
+  { title: 'Latte', description: 'Espuma sedosa y delicado sabor a café espresso.', price: '$75', image: '/images/product-card.svg' },
+  { title: 'Capuccino', description: 'Espuma cremosa con notas de cacao y canela.', price: '$80', image: '/images/product-card.svg' },
+  { title: 'Chocolate', description: 'Chocolate caliente con malvaviscos y encanto relajante.', price: '$70', image: '/images/product-card.svg' },
+  { title: 'Té', description: 'Selección de tés herbales para calmar y reconfortar.', price: '$60', image: '/images/product-card.svg' },
+  { title: 'Pan artesanal', description: 'Recién horneado con ingredientes naturales y sabor auténtico.', price: '$40', image: '/images/product-card.svg' },
+  { title: 'Postres', description: 'Caprichos dulces para compartir entre amigos.', price: '$65', image: '/images/product-card.svg' },
 ]
 
 const testimonials = [
-  { name: 'Mariana', text: 'Un lugar mágico con café delicioso y una vibra natural. ¡Me encanta el estilo dinosaurio!', stars: 5, photo: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Carlos', text: 'Los frappes son increíbles y el ambiente es muy acogedor. Recomendado para cualquier amante del café.', stars: 5, photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80' },
-  { name: 'Jessica', text: 'Servicio impecable, sabores auténticos y diseño muy cuidado. Ideal para trabajar o relajarse.', stars: 4, photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80' },
+  { name: 'Mariana', text: 'Un lugar mágico con café delicioso y una vibra natural. ¡Me encanta el estilo dinosaurio!', stars: 5, photo: '/images/testimonial-avatar.svg' },
+  { name: 'Carlos', text: 'Los frappes son increíbles y el ambiente es muy acogedor. Recomendado para cualquier amante del café.', stars: 5, photo: '/images/testimonial-avatar.svg' },
+  { name: 'Jessica', text: 'Servicio impecable, sabores auténticos y diseño muy cuidado. Ideal para trabajar o relajarse.', stars: 4, photo: '/images/testimonial-avatar.svg' },
 ]
 
 const galleryImages = [
-  'https://images.unsplash.com/photo-1521302080-1297c4a07cb8?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1516685018646-54927c094f3b?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80',
-  'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1200&q=80',
+  '/images/gallery-item.svg',
+  '/images/gallery-item.svg',
+  '/images/gallery-item.svg',
+  '/images/gallery-item.svg',
+  '/images/gallery-item.svg',
+  '/images/gallery-item.svg',
+  '/images/gallery-item.svg',
+  '/images/gallery-item.svg',
 ]
 
 function HomePage() {
@@ -90,7 +90,7 @@ function HomePage() {
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#10170F] text-white">
-      <section id="inicio" className="relative bg-cover bg-center px-4 pb-20 pt-32 text-white" style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1521302080-1297c4a07cb8?auto=format&fit=crop&w=1400&q=80)' }}>
+      <section id="inicio" className="relative bg-cover bg-center px-4 pb-20 pt-32 text-white" style={{ backgroundImage: 'url(/images/hero-bg.svg)' }}>
         <div className="absolute inset-0 bg-[#0f1b0f]/80" />
         <div className="relative mx-auto flex max-w-7xl flex-col gap-8 px-4 py-24 sm:px-6 lg:px-8">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-3xl rounded-[2rem] border border-white/10 bg-white/10 p-10 backdrop-blur-xl shadow-2xl">
@@ -115,7 +115,7 @@ function HomePage() {
               <p className="mt-4 text-lg leading-8 text-slate-300">Cada bebida está diseñada para ofrecer una experiencia cálida, reconfortante y con un toque de aventura. Nuestro objetivo es que cada cliente se sienta bienvenido y conectado con la esencia del lugar.</p>
             </motion.div>
             <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }} className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#202b20]/90 shadow-2xl">
-              <img src="https://images.unsplash.com/photo-1521302080-1297c4a07cb8?auto=format&fit=crop&w=1200&q=80" alt="Imagen de cafetería artesanal" className="h-full w-full object-cover" />
+              <img src="/images/about-cafe.svg" alt="Imagen de cafetería artesanal" className="h-full w-full object-cover" />
             </motion.div>
           </div>
         </div>
