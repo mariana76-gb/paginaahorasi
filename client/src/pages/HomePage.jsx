@@ -59,22 +59,23 @@ function HomePage() {
     setSubmitting(true)
 
     try {
-      let endpoint
-      if (import.meta.env.VITE_API_URL) {
-        endpoint = `${import.meta.env.VITE_API_URL.replace(/\/$/, '')}/api/contact`
-      } else if (import.meta.env.PROD) {
-        // In Netlify production use the serverless function
-        endpoint = '/.netlify/functions/contact'
-      } else {
-        endpoint = 'http://localhost:5000/api/contact'
-      }
+      const endpoint = import.meta.env.VITE_API_URL
+        ? `${import.meta.env.VITE_API_URL.replace(/\/$/, '')}/api/contact`
+        : '/.netlify/functions/contact'
 
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       })
-      const result = await response.json()
+
+      const text = await response.text()
+      let result
+      try {
+        result = JSON.parse(text)
+      } catch (parseError) {
+        throw new Error(`Respuesta inesperada del servidor: ${text.slice(0, 200)}`)
+      }
 
       if (!response.ok) {
         throw new Error(result.error || 'Ocurrió un error al enviar el mensaje.')
