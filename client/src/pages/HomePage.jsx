@@ -59,9 +59,7 @@ function HomePage() {
     setSubmitting(true)
 
     try {
-      const endpoint = import.meta.env.VITE_API_URL
-        ? `${import.meta.env.VITE_API_URL.replace(/\/$/, '')}/api/contact`
-        : '/.netlify/functions/contact'
+      const endpoint = '/.netlify/functions/contact'
 
       const response = await fetch(endpoint, {
         method: 'POST',
