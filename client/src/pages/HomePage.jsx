@@ -26,14 +26,14 @@ const testimonials = [
 ]
 
 const galleryImages = [
-  '/images/gallery-item.svg',
-  '/images/gallery-item.svg',
-  '/images/gallery-item.svg',
-  '/images/gallery-item.svg',
-  '/images/gallery-item.svg',
-  '/images/gallery-item.svg',
-  '/images/gallery-item.svg',
-  '/images/gallery-item.svg',
+  '/images/gallery-coffee-1.svg',
+  '/images/gallery-coffee-2.svg',
+  '/images/gallery-coffee-3.svg',
+  '/images/gallery-coffee-4.svg',
+  '/images/gallery-coffee-5.svg',
+  '/images/gallery-coffee-6.svg',
+  '/images/gallery-coffee-1.svg',
+  '/images/gallery-coffee-3.svg',
 ]
 
 function HomePage() {
