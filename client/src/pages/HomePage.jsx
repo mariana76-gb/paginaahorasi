@@ -203,7 +203,7 @@ function HomePage() {
               </div>
             </div>
             <div className="overflow-hidden rounded-[2rem] border border-pastelGreen/20 bg-pastelWhite p-8 shadow-soft">
-              <img src="/images/ajolote-facts-2.svg" alt="Hábitat del ajolote" className="h-full w-full rounded-[1.5rem] object-cover" />
+              <img src="/images/real-ajolotes/Ambystoma_mexicanum_(6337857516).jpg" alt="Hábitat del ajolote" className="h-full w-full rounded-[1.5rem] object-cover" />
             </div>
           </div>
         </div>
