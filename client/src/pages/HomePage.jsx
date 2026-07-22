@@ -11,17 +11,17 @@ const factCards = [
   {
     title: 'Regeneración única',
     description: 'Los ajolotes pueden regenerar extremidades, cola e incluso partes del corazón y cerebro.',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Axolotl_%28Ambystoma_mexicanum%29.jpg/1200px-Axolotl_%28Ambystoma_mexicanum%29.jpg',
+    image: '/images/real-ajolotes/ajolote-real-1.jpg',
   },
   {
     title: 'Son neotenicos',
     description: 'Conservan sus branquias externas y rasgos juveniles durante toda su vida adulta.',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Axolotl_melaxolotl.jpg/1200px-Axolotl_melaxolotl.jpg',
+    image: '/images/real-ajolotes/ajolote-real-2.jpg',
   },
   {
     title: 'Viven en Xochimilco',
     description: 'Este anfibio endémico habita los canales y chinampas de la cuenca del Valle de México.',
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Axolotl_-_Ambystoma_mexicanum_-_Flickr_-_greffraderie.jpg/1200px-Axolotl_-_Ambystoma_mexicanum_-_Flickr_-_greffraderie.jpg',
+    image: '/images/real-ajolotes/ajolote-real-3.jpg',
   },
 ]
 
