@@ -209,6 +209,29 @@ function HomePage() {
         </div>
       </section>
 
+      <section id="mapa" className="px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 text-center">
+            <span className="text-sm uppercase tracking-[0.35em] text-pastelGreen">Mapa interactivo</span>
+            <h2 className="mt-4 text-4xl font-bold text-pastelText">Explora el hábitat del ajolote en Xochimilco</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-pastelText/75">Visualiza el entorno natural del ajolote y sus canales emblemáticos directamente en la página.</p>
+          </div>
+          <div className="overflow-hidden rounded-[2rem] border border-pastelGreen/20 bg-pastelWhite p-4 shadow-soft">
+            <div className="aspect-[16/9] w-full overflow-hidden rounded-[1.5rem] bg-black">
+              <iframe
+                className="h-full w-full"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15007.597259514504!2d-99.11626923177161!3d19.270606659579472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cd8c02bb81e3a5%3A0x225bd1d0c1fcef96!2sXochimilco%2C%20CDMX!5e0!3m2!1ses!2smx!4v1700630000000!5m2!1ses!2smx"
+                title="Mapa de Xochimilco"
+                frameBorder="0"
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="galeria" className="px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
