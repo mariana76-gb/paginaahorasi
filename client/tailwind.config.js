@@ -3,12 +3,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        aquamarine: '#A7E7E0',
-        tealish: '#3A8B88',
-        mint: '#83c9c2',
+        pastelGreen: '#C8EAD0',
+        pastelPink: '#F7D7DD',
+        pastelWhite: '#F8F4F2',
+        pastelText: '#415445',
+        pastelSoft: '#EDF4ED',
       },
       boxShadow: {
-        soft: '0 20px 60px rgba(0,0,0,0.25)',
+        soft: '0 20px 60px rgba(0,0,0,0.08)',
       },
     },
   },

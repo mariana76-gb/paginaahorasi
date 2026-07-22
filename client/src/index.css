@@ -13,8 +13,8 @@ html {
 body {
   margin: 0;
   font-family: 'Inter', system-ui, sans-serif;
-  background: radial-gradient(circle at top, #0b2b35 0%, #07161e 60%, #020a11 100%);
-  color: #f8fafc;
+  background: radial-gradient(circle at top, #FFFFFF 0%, #F8F4F2 55%, #F3E9EB 100%);
+  color: #415445;
 }
 
 * {
