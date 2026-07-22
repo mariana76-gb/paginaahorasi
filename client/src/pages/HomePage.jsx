@@ -226,6 +226,28 @@ function HomePage() {
         </div>
       </section>
 
+      <section id="video" className="px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 text-center">
+            <span className="text-sm uppercase tracking-[0.35em] text-pastelGreen">Video</span>
+            <h2 className="mt-4 text-4xl font-bold text-pastelText">Conoce más sobre los ajolotes</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-pastelText/75">Mira este breve video educativo directamente en la página.</p>
+          </div>
+          <div className="overflow-hidden rounded-[2rem] border border-pastelGreen/20 bg-pastelWhite p-4 shadow-soft">
+            <div className="aspect-[16/9] w-full overflow-hidden rounded-[1.5rem] bg-black">
+              <iframe
+                className="h-full w-full"
+                src="https://www.youtube.com/embed/kTwKXVPz9Yk"
+                title="Video sobre ajolotes"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="testimonios" className="bg-pastelWhite/80 px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
