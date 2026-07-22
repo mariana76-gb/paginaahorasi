@@ -3,8 +3,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        beige: '#c8a175',
-        cream: '#f5e8cd',
+        aquamarine: '#A7E7E0',
+        tealish: '#3A8B88',
+        mint: '#83c9c2',
       },
       boxShadow: {
         soft: '0 20px 60px rgba(0,0,0,0.25)',

@@ -8,7 +8,7 @@ import TermsPage from './pages/TermsPage'
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-[#0d140e] text-white">
+      <div className="min-h-screen bg-[#07161E] text-white">
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />

@@ -1,45 +1,70 @@
 import { motion } from 'framer-motion'
-import { FaLeaf, FaCoffee, FaCookieBite, FaStar } from 'react-icons/fa'
+import { FaFish, FaLeaf, FaWater, FaStar } from 'react-icons/fa'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import { useState } from 'react'
-import Loader from '../components/Loader'
 
-const productCards = [
-  { title: 'Frappes', description: 'Batidos cremosos con hielo, café y toppings naturales.', price: '$95', image: '/images/product-card.svg' },
-  { title: 'Café Americano', description: 'Aroma intenso con cuerpo tostado para comenzar el día.', price: '$55', image: '/images/product-card.svg' },
-  { title: 'Latte', description: 'Espuma sedosa y delicado sabor a café espresso.', price: '$75', image: '/images/product-card.svg' },
-  { title: 'Capuccino', description: 'Espuma cremosa con notas de cacao y canela.', price: '$80', image: '/images/product-card.svg' },
-  { title: 'Chocolate', description: 'Chocolate caliente con malvaviscos y encanto relajante.', price: '$70', image: '/images/product-card.svg' },
-  { title: 'Té', description: 'Selección de tés herbales para calmar y reconfortar.', price: '$60', image: '/images/product-card.svg' },
-  { title: 'Pan artesanal', description: 'Recién horneado con ingredientes naturales y sabor auténtico.', price: '$40', image: '/images/product-card.svg' },
-  { title: 'Postres', description: 'Caprichos dulces para compartir entre amigos.', price: '$65', image: '/images/product-card.svg' },
+const factCards = [
+  {
+    title: 'Regeneración única',
+    description: 'Los ajolotes pueden regenerar extremidades, cola e incluso partes del corazón y cerebro.',
+    image: '/images/ajolote-facts-1.svg',
+  },
+  {
+    title: 'Son neotenicos',
+    description: 'Conservan sus branquias externas y rasgos juveniles durante toda su vida adulta.',
+    image: '/images/ajolote-facts-2.svg',
+  },
+  {
+    title: 'Viven en Xochimilco',
+    description: 'Este anfibio endémico habita los canales y chinampas de la cuenca del Valle de México.',
+    image: '/images/ajolote-facts-3.svg',
+  },
+]
+
+const habitatItems = [
+  {
+    icon: 'water',
+    title: 'Agua limpia',
+    description: 'Sus cuerpos dependen de canales frescos y bien oxigenados.',
+  },
+  {
+    icon: 'leaf',
+    title: 'Vegetación nativa',
+    description: 'Los ajolotes encuentran refugio y alimento en plantas acuáticas locales.',
+  },
+  {
+    icon: 'fish',
+    title: 'Comunidad frágil',
+    description: 'La conservación del área protege a muchas especies aliadas del ajolote.',
+  },
 ]
 
 const testimonials = [
-  { name: 'Mariana', text: 'Un lugar mágico con café delicioso y una vibra natural. ¡Me encanta el estilo dinosaurio!', stars: 5, photo: '/images/testimonial-avatar.svg' },
-  { name: 'Carlos', text: 'Los frappes son increíbles y el ambiente es muy acogedor. Recomendado para cualquier amante del café.', stars: 5, photo: '/images/testimonial-avatar.svg' },
-  { name: 'Jessica', text: 'Servicio impecable, sabores auténticos y diseño muy cuidado. Ideal para trabajar o relajarse.', stars: 4, photo: '/images/testimonial-avatar.svg' },
-]
-
-const galleryImages = [
-  '/images/gallery-coffee-1.svg',
-  '/images/gallery-coffee-2.svg',
-  '/images/gallery-coffee-3.svg',
-  '/images/gallery-coffee-4.svg',
-  '/images/gallery-coffee-5.svg',
-  '/images/gallery-coffee-6.svg',
-  '/images/gallery-coffee-1.svg',
-  '/images/gallery-coffee-3.svg',
+  {
+    name: 'Lucía',
+    text: 'Aprendí muchísimo sobre el ajolote y ahora comprendo por qué es tan importante cuidarlo.',
+    stars: 5,
+  },
+  {
+    name: 'Diego',
+    text: 'El diseño es fresco y la información es clara. Me encantó la sección de regeneración.',
+    stars: 5,
+  },
+  {
+    name: 'Ana',
+    text: 'Un sitio muy bonito para conocer más sobre este animal mexicano tan especial.',
+    stars: 4,
+  },
 ]
 
 function HomePage() {
   const [submitting, setSubmitting] = useState(false)
   const [status, setStatus] = useState(null)
-  const [formData, setFormData] = useState({ nombre: '', correo: '', telefono: '', mensaje: '' })
+  const [formData, setFormData] = useState({ nombre: '', correo: '', mensaje: '' })
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -50,8 +75,8 @@ function HomePage() {
     event.preventDefault()
     setStatus(null)
 
-    const { nombre, correo, telefono, mensaje } = formData
-    if (!nombre || !correo || !telefono || !mensaje) {
+    const { nombre, correo, mensaje } = formData
+    if (!nombre || !correo || !mensaje) {
       setStatus({ type: 'error', message: 'Por favor completa todos los campos.' })
       return
     }
@@ -60,13 +85,11 @@ function HomePage() {
 
     try {
       const endpoint = '/.netlify/functions/contact'
-
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       })
-
       const text = await response.text()
       let result
       try {
@@ -80,7 +103,7 @@ function HomePage() {
       }
 
       setStatus({ type: 'success', message: result.message })
-      setFormData({ nombre: '', correo: '', telefono: '', mensaje: '' })
+      setFormData({ nombre: '', correo: '', mensaje: '' })
     } catch (error) {
       setStatus({ type: 'error', message: error.message })
     } finally {
@@ -88,57 +111,73 @@ function HomePage() {
     }
   }
 
+  const renderIcon = (icon) => {
+    if (icon === 'water') return <FaWater className="h-6 w-6 text-[#83c9c2]" />
+    if (icon === 'leaf') return <FaLeaf className="h-6 w-6 text-[#83c9c2]" />
+    return <FaFish className="h-6 w-6 text-[#83c9c2]" />
+  }
+
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#10170F] text-white">
-      <section id="inicio" className="relative bg-cover bg-center px-4 pb-20 pt-32 text-white" style={{ backgroundImage: 'url(/images/hero-bg.svg)' }}>
-        <div className="absolute inset-0 bg-[#0f1b0f]/80" />
-        <div className="relative mx-auto flex max-w-7xl flex-col gap-8 px-4 py-24 sm:px-6 lg:px-8">
-          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-3xl rounded-[2rem] border border-white/10 bg-white/10 p-10 backdrop-blur-xl shadow-2xl">
-            <span className="inline-flex rounded-full bg-beige/10 px-4 py-1 text-sm font-semibold uppercase tracking-[0.35em] text-beige">Cafetería artesanal</span>
-            <h1 className="mt-6 text-4xl font-extrabold leading-tight text-white sm:text-6xl">Frapessaurio: café premium con espíritu dinosaurio.</h1>
-            <p className="mt-6 max-w-2xl text-lg text-slate-200">Disfruta de frappes cremosos, desayunos artesanales y un ambiente cálido inspirado en la naturaleza.</p>
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <a href="#productos" className="inline-flex items-center justify-center rounded-full bg-[#A78A59] px-8 py-4 text-sm font-semibold text-[#10170F] transition hover:bg-[#c79a68]">Conoce nuestro menú</a>
-              <a href="#contacto" className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-8 py-4 text-sm font-semibold text-white transition hover:bg-white/20">Contáctanos</a>
+    <main className="relative min-h-screen overflow-hidden bg-[#07161E] text-white">
+      <section id="inicio" className="relative overflow-hidden px-4 pb-20 pt-32 text-white sm:px-6 lg:px-8">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(167,231,224,0.08),_transparent_45%)]" />
+        <div className="relative mx-auto flex max-w-7xl flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
+          <div className="max-w-2xl space-y-8">
+            <span className="inline-flex rounded-full bg-[#83c9c2]/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-[#A7E7E0]">Guía del ajolote</span>
+            <h1 className="text-4xl font-extrabold leading-tight text-white sm:text-6xl">Conoce al ajolote mexicano y por qué merece protección.</h1>
+            <p className="max-w-xl text-lg leading-8 text-slate-300">Explora sus increíbles capacidades de regeneración, su hábitat natural y las acciones que podemos tomar para protegerlo. Una página creada para celebrar y aprender sobre este anfibio emblemático.</p>
+            <div className="flex flex-col gap-4 sm:flex-row">
+              <a href="#datos" className="inline-flex items-center justify-center rounded-full bg-[#83c9c2] px-8 py-4 text-sm font-semibold text-[#07161E] transition hover:bg-[#a7e7e0]">Ver datos</a>
+              <a href="#contacto" className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-8 py-4 text-sm font-semibold text-white transition hover:bg-white/20">Ayuda al ajolote</a>
             </div>
-          </motion.div>
+          </div>
+
+          <div className="mx-auto w-full max-w-2xl rounded-[2rem] border border-white/10 bg-[#0a2733]/80 p-4 shadow-2xl backdrop-blur-xl lg:p-6">
+            <img src="/images/ajolote-hero.svg" alt="Ilustración de ajolote" className="h-full w-full rounded-[1.75rem] object-cover" />
+          </div>
         </div>
       </section>
 
-      <section id="nosotros" className="bg-[#121B13] px-4 py-20 sm:px-6 lg:px-8">
+      <section id="nosotros" className="bg-[#08161e] px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
             <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }}>
-              <span className="text-sm uppercase tracking-[0.3em] text-beige">Sobre nosotros</span>
-              <h2 className="mt-4 text-4xl font-bold text-white">La historia detrás de Frapessaurio</h2>
-              <p className="mt-6 text-lg leading-8 text-slate-300">Frapessaurio nace de la pasión por el café artesanal y el deseo de crear un espacio que sienta como hogar. Aquí combinamos ingredientes naturales, recetas cuidadas y una atmósfera inspirada en la naturaleza y los dinosaurios amistosos.</p>
-              <p className="mt-4 text-lg leading-8 text-slate-300">Cada bebida está diseñada para ofrecer una experiencia cálida, reconfortante y con un toque de aventura. Nuestro objetivo es que cada cliente se sienta bienvenido y conectado con la esencia del lugar.</p>
+              <span className="text-sm uppercase tracking-[0.35em] text-[#A7E7E0]">Sobre el ajolote</span>
+              <h2 className="mt-4 text-4xl font-bold text-white">¿Qué hace al ajolote tan especial?</h2>
+              <p className="mt-6 text-lg leading-8 text-slate-300">El ajolote mexicano es un anfibio neoténico que permanece en estado larvario durante toda su vida y conserva branquias externas. Es famoso por su capacidad de regenerar miembros completos y órganos internos.</p>
+              <p className="mt-4 text-lg leading-8 text-slate-300">Originario de la cuenca de Xochimilco, su supervivencia está en peligro debido a la pérdida de hábitat, especies invasoras y contaminación. Conocerlo es el primer paso para protegerlo.</p>
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }} className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#202b20]/90 shadow-2xl">
-              <img src="/images/about-cafe.svg" alt="Imagen de cafetería artesanal" className="h-full w-full object-cover" />
+            <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }} className="rounded-[2rem] border border-white/10 bg-[#0c2631]/90 p-8 shadow-2xl">
+              <div className="space-y-4 text-slate-200">
+                <div className="rounded-3xl bg-[#0b2e3e]/80 p-6">
+                  <h3 className="text-2xl font-semibold text-white">Regeneración</h3>
+                  <p className="mt-3 text-slate-300">El ajolote puede regenerar extremidades, médula espinal, corazón y partes del cerebro.</p>
+                </div>
+                <div className="rounded-3xl bg-[#0b2e3e]/80 p-6">
+                  <h3 className="text-2xl font-semibold text-white">Endémico</h3>
+                  <p className="mt-3 text-slate-300">Solo existe naturalmente en los canales de Xochimilco y algunos lagos cercanos.</p>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <section id="productos" className="px-4 py-20 sm:px-6 lg:px-8">
+      <section id="datos" className="px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
-            <span className="text-sm uppercase tracking-[0.35em] text-beige">Nuestros favoritos</span>
-            <h2 className="mt-4 text-4xl font-bold text-white">Productos</h2>
-            <p className="mt-3 max-w-2xl mx-auto text-slate-300">Descubre la magia de nuestros frappes, cafés y bocados artisanales que despiertan tus sentidos.</p>
+            <span className="text-sm uppercase tracking-[0.35em] text-[#A7E7E0]">Datos curiosos</span>
+            <h2 className="mt-4 text-4xl font-bold text-white">Lo que debes saber</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-slate-300">Tres razones por las que el ajolote es un animal asombroso y vulnerable.</p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-            {productCards.map((product) => (
-              <motion.article key={product.title} whileHover={{ y: -10 }} className="rounded-[2rem] border border-white/10 bg-[#1D2920]/90 p-5 shadow-2xl transition duration-300">
-                <img src={product.image} alt={product.title} className="h-56 w-full rounded-3xl object-cover" />
-                <div className="mt-6">
-                  <h3 className="text-2xl font-semibold text-white">{product.title}</h3>
-                  <p className="mt-3 text-slate-300">{product.description}</p>
-                  <div className="mt-5 flex items-center justify-between">
-                    <span className="text-lg font-bold text-beige">{product.price}</span>
-                    <button className="rounded-full bg-white/10 px-4 py-2 text-sm text-white transition hover:bg-white/20">Ver</button>
-                  </div>
+
+          <div className="grid gap-8 lg:grid-cols-3">
+            {factCards.map((fact) => (
+              <motion.article key={fact.title} whileHover={{ y: -10 }} className="rounded-[2rem] border border-white/10 bg-[#0a2733]/90 p-8 shadow-2xl transition duration-300">
+                <img src={fact.image} alt={fact.title} className="h-64 w-full rounded-[1.5rem] object-cover" />
+                <div className="mt-8 space-y-4">
+                  <h3 className="text-2xl font-semibold text-white">{fact.title}</h3>
+                  <p className="text-slate-300">{fact.description}</p>
                 </div>
               </motion.article>
             ))}
@@ -146,70 +185,60 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="bg-[#162115] px-4 py-20 sm:px-6 lg:px-8">
+      <section id="habitat" className="bg-[#07161E] px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-8 lg:grid-cols-2">
-            <div className="rounded-[2rem] border border-white/10 bg-[#1f2a20]/90 p-10 shadow-2xl">
-              <span className="text-sm uppercase tracking-[0.35em] text-beige">Nuestra misión</span>
-              <h3 className="mt-4 text-3xl font-bold text-white">Crear experiencias memorables</h3>
-              <p className="mt-4 text-slate-300">Inspirar a cada cliente con bebidas artesanales, sabores naturales y un ambiente acogedor donde la comunidad se encuentra y comparte.</p>
-            </div>
-            <div className="rounded-[2rem] border border-white/10 bg-[#1f2a20]/90 p-10 shadow-2xl">
-              <span className="text-sm uppercase tracking-[0.35em] text-beige">Nuestra visión</span>
-              <h3 className="mt-4 text-3xl font-bold text-white">Ser referencia de cafeterías artesanales</h3>
-              <p className="mt-4 text-slate-300">Ser un destino favorito que combine diseño moderno, calidad premium y una identidad única inspirada en dinosaurios y naturaleza.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-12 text-center">
-            <span className="text-sm uppercase tracking-[0.35em] text-beige">Nuestros clientes</span>
-            <h2 className="mt-4 text-4xl font-bold text-white">Marcas que confían en nosotros</h2>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {['DinoTec', 'Verde Studio', 'Café Nativo', 'Jardín Urbano'].map((brand) => (
-              <div key={brand} className="rounded-[2rem] border border-white/10 bg-[#1f2a20]/90 p-8 text-center shadow-2xl">
-                <FaLeaf className="mx-auto h-12 w-12 text-beige" />
-                <h3 className="mt-6 text-xl font-semibold text-white">{brand}</h3>
-                <p className="mt-3 text-slate-300">Colaboración en eventos y catering de café premium.</p>
+          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div>
+              <span className="text-sm uppercase tracking-[0.35em] text-[#A7E7E0]">Hábitat</span>
+              <h2 className="mt-4 text-4xl font-bold text-white">El hogar del ajolote</h2>
+              <p className="mt-4 max-w-2xl text-slate-300">Los canales de Xochimilco y las chinampas forman un ecosistema acuático frágil. Mantenerlos limpios y libres de especies invasoras es clave para que los ajolotes sobrevivan.</p>
+              <div className="mt-10 grid gap-6 sm:grid-cols-2">
+                {habitatItems.map((item) => (
+                  <div key={item.title} className="rounded-[2rem] border border-white/10 bg-[#0b2432]/90 p-6">
+                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#183a46]/80">{renderIcon(item.icon)}</div>
+                    <h3 className="mt-5 text-xl font-semibold text-white">{item.title}</h3>
+                    <p className="mt-3 text-slate-300">{item.description}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#0c2834]/90 p-8 shadow-2xl">
+              <img src="/images/ajolote-facts-2.svg" alt="Hábitat del ajolote" className="h-full w-full rounded-[1.5rem] object-cover" />
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="galeria" className="bg-[#10170F] px-4 py-20 sm:px-6 lg:px-8">
+      <section id="galeria" className="px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
-            <span className="text-sm uppercase tracking-[0.35em] text-beige">Galería</span>
-            <h2 className="mt-4 text-4xl font-bold text-white">Un vistazo a nuestro espacio</h2>
+            <span className="text-sm uppercase tracking-[0.35em] text-[#A7E7E0]">Galería</span>
+            <h2 className="mt-4 text-4xl font-bold text-white">Momentos del ajolote</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-slate-300">Ilustraciones inspiradas en su curiosa apariencia y su entorno acuático.</p>
           </div>
           <Swiper modules={[Autoplay, Pagination, Navigation]} spaceBetween={20} slidesPerView={1} navigation pagination={{ clickable: true }} autoplay={{ delay: 3500 }} breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }} className="rounded-[2rem] px-4 pb-8">
-            {galleryImages.map((src, index) => (
-              <SwiperSlide key={index} className="rounded-[2rem] overflow-hidden">
-                <img src={src} alt={`Galería ${index + 1}`} className="h-96 w-full object-cover" />
+            {factCards.map((fact) => (
+              <SwiperSlide key={fact.title} className="rounded-[2rem] overflow-hidden">
+                <img src={fact.image} alt={fact.title} className="h-96 w-full object-cover" />
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
       </section>
 
-      <section id="testimonios" className="px-4 py-20 sm:px-6 lg:px-8">
+      <section id="testimonios" className="bg-[#08161f] px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 text-center">
-            <span className="text-sm uppercase tracking-[0.35em] text-beige">Testimonios</span>
-            <h2 className="mt-4 text-4xl font-bold text-white">Lo que dicen nuestros visitantes</h2>
+            <span className="text-sm uppercase tracking-[0.35em] text-[#A7E7E0]">Testimonios</span>
+            <h2 className="mt-4 text-4xl font-bold text-white">Nuestros visitantes opinan</h2>
           </div>
-          <Swiper modules={[Autoplay, Pagination]} spaceBetween={24} slidesPerView={1} pagination={{ clickable: true }} autoplay={{ delay: 4000 }} className="rounded-[2rem] bg-[#1e2a20]/80 p-8 shadow-2xl">
+          <Swiper modules={[Autoplay, Pagination]} spaceBetween={24} slidesPerView={1} pagination={{ clickable: true }} autoplay={{ delay: 4000 }} className="rounded-[2rem] bg-[#0a2633]/80 p-8 shadow-2xl">
             {testimonials.map((testimonial) => (
               <SwiperSlide key={testimonial.name} className="rounded-[2rem]">
                 <div className="grid gap-8 lg:grid-cols-[140px_minmax(0,1fr)] lg:items-center">
-                  <img src={testimonial.photo} alt={testimonial.name} className="h-36 w-36 rounded-full object-cover" />
+                  <div className="flex h-36 w-36 items-center justify-center rounded-full bg-[#183a46]/80 text-3xl text-[#A7E7E0]">{testimonial.name[0]}</div>
                   <div>
-                    <div className="flex items-center gap-2 text-beige">
+                    <div className="flex items-center gap-2 text-[#83c9c2]">
                       {Array.from({ length: testimonial.stars }).map((_, index) => (
                         <FaStar key={index} />
                       ))}
@@ -224,101 +253,47 @@ function HomePage() {
         </div>
       </section>
 
-      <section id="contacto" className="bg-[#152012] px-4 py-20 sm:px-6 lg:px-8">
+      <section id="contacto" className="px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-start">
-            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }} className="rounded-[2rem] border border-white/10 bg-[#1f2a20]/90 p-10 shadow-2xl">
-              <span className="text-sm uppercase tracking-[0.35em] text-beige">Contáctanos</span>
-              <h2 className="mt-4 text-4xl font-bold text-white">¿Listo para tu próxima bebida?</h2>
-              <p className="mt-4 text-slate-300">Escribe tu mensaje y te responderemos pronto. En Frapessaurio hacemos envíos rápidos y reservamos tu mesa con gusto.</p>
+          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }} className="rounded-[2rem] border border-white/10 bg-[#0b2432]/90 p-10 shadow-2xl">
+              <span className="text-sm uppercase tracking-[0.35em] text-[#A7E7E0]">Conservación</span>
+              <h2 className="mt-4 text-4xl font-bold text-white">Ayuda a proteger al ajolote</h2>
+              <p className="mt-4 text-slate-300">Comparte información útil, promueve hábitats saludables y conoce acciones que ayudan a la conservación del ajolote mexicano.</p>
               <div className="mt-10 space-y-6 text-slate-300">
                 <div>
-                  <h3 className="text-lg font-semibold text-white">Dirección</h3>
-                  <p>Calle Dino 123, Ciudad Verde</p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-white">Horario</h3>
-                  <table className="mt-3 w-full text-left text-sm text-slate-300">
-                    <tbody>
-                      {['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'].map((day) => (
-                        <tr key={day} className="border-b border-white/10">
-                          <td className="py-3 font-medium text-white">{day}</td>
-                          <td className="py-3">{day === 'Viernes' ? '8:00 - 22:00' : day === 'Sábado' ? '9:00 - 22:00' : day === 'Domingo' ? '9:00 - 18:00' : '8:00 - 20:00'}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                  <h3 className="text-lg font-semibold text-white">¿Cómo apoyar?</h3>
+                  <ul className="mt-4 list-disc space-y-3 pl-5 text-slate-300">
+                    <li>Mantener limpios los canales y cuerpos de agua.</li>
+                    <li>Evitar especies invasoras y plásticos en el agua.</li>
+                    <li>Apoyar proyectos de conservación local.</li>
+                  </ul>
                 </div>
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }} className="rounded-[2rem] border border-white/10 bg-[#1f2a20]/90 p-8 shadow-2xl">
+            <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }} className="rounded-[2rem] border border-white/10 bg-[#0b2734]/90 p-8 shadow-2xl">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <label className="block">
                   <span className="text-sm font-medium text-white">Nombre</span>
-                  <input name="nombre" value={formData.nombre} onChange={handleChange} type="text" required aria-label="Nombre" className="mt-2 w-full rounded-3xl border border-white/10 bg-[#121a12] px-4 py-3 text-white outline-none transition focus:border-beige focus:ring-2 focus:ring-beige/30" />
+                  <input name="nombre" value={formData.nombre} onChange={handleChange} type="text" required aria-label="Nombre" className="mt-2 w-full rounded-3xl border border-white/10 bg-[#0b1e2a] px-4 py-3 text-white outline-none transition focus:border-[#83c9c2] focus:ring-2 focus:ring-[#83c9c2]/30" />
                 </label>
                 <label className="block">
                   <span className="text-sm font-medium text-white">Correo</span>
-                  <input name="correo" value={formData.correo} onChange={handleChange} type="email" required aria-label="Correo electrónico" className="mt-2 w-full rounded-3xl border border-white/10 bg-[#121a12] px-4 py-3 text-white outline-none transition focus:border-beige focus:ring-2 focus:ring-beige/30" />
-                </label>
-                <label className="block">
-                  <span className="text-sm font-medium text-white">Teléfono</span>
-                  <input name="telefono" value={formData.telefono} onChange={handleChange} type="tel" required aria-label="Teléfono" className="mt-2 w-full rounded-3xl border border-white/10 bg-[#121a12] px-4 py-3 text-white outline-none transition focus:border-beige focus:ring-2 focus:ring-beige/30" />
+                  <input name="correo" value={formData.correo} onChange={handleChange} type="email" required aria-label="Correo electrónico" className="mt-2 w-full rounded-3xl border border-white/10 bg-[#0b1e2a] px-4 py-3 text-white outline-none transition focus:border-[#83c9c2] focus:ring-2 focus:ring-[#83c9c2]/30" />
                 </label>
                 <label className="block">
                   <span className="text-sm font-medium text-white">Mensaje</span>
-                  <textarea name="mensaje" value={formData.mensaje} onChange={handleChange} required rows="5" aria-label="Mensaje" className="mt-2 w-full rounded-3xl border border-white/10 bg-[#121a12] px-4 py-3 text-white outline-none transition focus:border-beige focus:ring-2 focus:ring-beige/30"></textarea>
+                  <textarea name="mensaje" value={formData.mensaje} onChange={handleChange} required rows="5" aria-label="Mensaje" className="mt-2 w-full rounded-3xl border border-white/10 bg-[#0b1e2a] px-4 py-3 text-white outline-none transition focus:border-[#83c9c2] focus:ring-2 focus:ring-[#83c9c2]/30"></textarea>
                 </label>
                 {status && (
                   <p className={`rounded-3xl px-4 py-3 text-sm ${status.type === 'success' ? 'bg-emerald-500/15 text-emerald-200' : 'bg-rose-500/15 text-rose-200'}`}>{status.message}</p>
                 )}
-                <button type="submit" disabled={submitting} className="inline-flex w-full items-center justify-center rounded-full bg-beige px-6 py-4 text-sm font-semibold text-[#10170F] transition hover:bg-[#d4b47a] disabled:cursor-not-allowed disabled:bg-white/20">
+                <button type="submit" disabled={submitting} className="inline-flex w-full items-center justify-center rounded-full bg-[#83c9c2] px-6 py-4 text-sm font-semibold text-[#07161E] transition hover:bg-[#a7e7e0] disabled:cursor-not-allowed disabled:bg-white/20">
                   {submitting ? 'Enviando...' : 'Enviar mensaje'}
                 </button>
               </form>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#0b140c] px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            <div>
-              <span className="text-sm uppercase tracking-[0.35em] text-beige">Multimedia</span>
-              <h2 className="mt-4 text-4xl font-bold text-white">Vive la experiencia Frapessaurio</h2>
-              <p className="mt-4 max-w-2xl text-slate-300">Conoce nuestras especialidades, ambiente y más en este video que captura la esencia de nuestra cafetería.</p>
-              <ol className="mt-8 list-decimal space-y-3 pl-5 text-slate-300">
-                <li>Selecciona granos de calidad.</li>
-                <li>Molido fresco y preciso.</li>
-                <li>Preparación cuidadosa con técnica artesanal.</li>
-                <li>Servir con cariño y detalle.</li>
-              </ol>
-            </div>
-            <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#1f2a20]/90 shadow-2xl">
-              <iframe className="h-80 w-full" src="https://www.youtube.com/embed/eG0p9TS1zXg" title="Video promocional Frapessaurio" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#121B13] px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
-            <div>
-              <span className="text-sm uppercase tracking-[0.35em] text-beige">Mapa</span>
-              <h2 className="mt-4 text-4xl font-bold text-white">Encuéntranos fácilmente</h2>
-              <p className="mt-4 max-w-2xl text-slate-300">Visítanos en nuestro local y disfruta de una atmósfera verde, cómoda y llena de aroma a café artesanal.</p>
-              <ul className="mt-8 space-y-3 text-slate-300">
-                <li className="flex items-start gap-3"><span className="mt-1 inline-flex h-2 w-2 rounded-full bg-beige" />Café artesanal con ingredientes locales.</li>
-                <li className="flex items-start gap-3"><span className="mt-1 inline-flex h-2 w-2 rounded-full bg-beige" />Ambiente cómodo y moderno.</li>
-                <li className="flex items-start gap-3"><span className="mt-1 inline-flex h-2 w-2 rounded-full bg-beige" />Perfecto para reuniones y trabajo remoto.</li>
-              </ul>
-            </div>
-            <div className="overflow-hidden rounded-[2rem] border border-white/10 bg-[#1f2a20]/90 shadow-2xl">
-              <iframe title="Mapa de Frapessaurio" className="h-96 w-full" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.52064455058!2d-99.18661568467658!3d19.407487586882476!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff37ef05db4b%3A0x59a05cedbdb6e0f5!2sMuseo%20Nacional%20de%20Antropolog%C3%ADa!5e0!3m2!1ses!2smx!4v1700000000000!5m2!1ses!2smx" allowFullScreen loading="lazy"></iframe>
-            </div>
           </div>
         </div>
       </section>

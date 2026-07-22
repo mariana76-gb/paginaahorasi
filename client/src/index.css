@@ -13,7 +13,7 @@ html {
 body {
   margin: 0;
   font-family: 'Inter', system-ui, sans-serif;
-  background: #0d140e;
+  background: radial-gradient(circle at top, #0b2b35 0%, #07161e 60%, #020a11 100%);
   color: #f8fafc;
 }
 
@@ -28,5 +28,5 @@ textarea {
 }
 
 ::selection {
-  background-color: rgba(200, 161, 117, 0.35);
+  background-color: rgba(167, 231, 224, 0.35);
 }

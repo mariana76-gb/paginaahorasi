@@ -1,8 +1,8 @@
 export const menuItems = [
   { id: 'inicio', label: 'Inicio' },
-  { id: 'nosotros', label: 'Sobre nosotros' },
-  { id: 'productos', label: 'Productos' },
+  { id: 'nosotros', label: 'Sobre el ajolote' },
+  { id: 'datos', label: 'Datos curiosos' },
+  { id: 'habitat', label: 'Hábitat' },
   { id: 'galeria', label: 'Galería' },
-  { id: 'testimonios', label: 'Testimonios' },
   { id: 'contacto', label: 'Contacto' },
 ]

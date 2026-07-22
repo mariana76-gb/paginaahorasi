@@ -16,18 +16,18 @@ function Navbar() {
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        scrolled ? 'bg-[#2E3C2E]/95 shadow-2xl backdrop-blur-md' : 'bg-transparent'
+        scrolled ? 'bg-[#071f2c]/95 shadow-2xl backdrop-blur-md' : 'bg-transparent'
       }`}
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <a href="#inicio" className="text-2xl font-semibold tracking-wide text-[#f5e8cd]" aria-label="Ir al inicio">Frapessaurio</a>
+        <a href="#inicio" className="text-2xl font-semibold tracking-wide text-[#A7E7E0]" aria-label="Ir al inicio">Ajolotes MX</a>
 
         <nav className="hidden items-center gap-8 md:flex">
           {menuItems.map((item) => (
-            <a key={item.id} href={`#${item.id}`} className="text-sm font-medium text-white transition hover:text-[#c8a175]">{item.label}</a>
+            <a key={item.id} href={`#${item.id}`} className="text-sm font-medium text-white transition hover:text-[#83c9c2]">{item.label}</a>
           ))}
         </nav>
 
@@ -38,7 +38,7 @@ function Navbar() {
 
       {isOpen && (
         <motion.div
-          className="mx-auto flex max-w-7xl flex-col gap-4 border-t border-white/10 bg-[#1F291F]/95 px-4 py-4 text-center md:hidden"
+          className="mx-auto flex max-w-7xl flex-col gap-4 border-t border-white/10 bg-[#0f2c34]/95 px-4 py-4 text-center md:hidden"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.25 }}
