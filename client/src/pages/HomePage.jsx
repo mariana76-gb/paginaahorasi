@@ -45,52 +45,6 @@ const factCards = [
   },
 ]
 
-const missionCards = [
-  {
-    title: 'Misión',
-    description: 'Generar conciencia y apoyar la conservación del ajolote mexicano mediante información accesible y acciones comunitarias.',
-    icon: 'leaf',
-  },
-  {
-    title: 'Visión',
-    description: 'Ser un referente educativo y de apoyo para proteger el ecosistema de Xochimilco y crear una comunidad comprometida.',
-    icon: 'water',
-  },
-]
-
-const serviceCards = [
-  {
-    title: 'Educación ambiental',
-    description: 'Material informativo para aprender sobre el ajolote y sus necesidades.',
-    icon: 'leaf',
-  },
-  {
-    title: 'Conservación',
-    description: 'Promoción de prácticas que ayudan a mantener los canales y chinampas saludables.',
-    icon: 'water',
-  },
-  {
-    title: 'Alianzas',
-    description: 'Trabajo conjunto con grupos locales y organizaciones que protegen al ajolote.',
-    icon: 'fish',
-  },
-]
-
-const partnerItems = [
-  {
-    name: 'Santuario Ajolote',
-    description: 'Aliado clave en la difusión y protección del ajolote en la CDMX.',
-  },
-  {
-    name: 'Tequio Run',
-    description: 'Comunidad que apoya proyectos ambientales y de limpieza de canales.',
-  },
-  {
-    name: 'Voluntariado local',
-    description: 'Equipo de personas comprometidas con la conservación del hábitat.',
-  },
-]
-
 const habitatItems = [
   {
     icon: 'water',
