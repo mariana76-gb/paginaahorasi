@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FaFish, FaLeaf, FaWater, FaStar } from 'react-icons/fa'
+import { FaFish, FaLeaf, FaWater, FaStar, FaQuoteLeft } from 'react-icons/fa'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
@@ -22,6 +22,26 @@ const factCards = [
     title: 'Viven en Xochimilco',
     description: 'Este anfibio endémico habita los canales y chinampas de la cuenca del Valle de México.',
     image: '/images/real-ajolotes/ajolote-real-3.jpg',
+  },
+  {
+    title: 'Aguas serenas',
+    description: 'Zonas tranquilas con vegetación acuática permiten el desarrollo de crías.',
+    image: '/images/real-ajolotes/ajolote-real-4.jpg',
+  },
+  {
+    title: 'Refugios naturales',
+    description: 'Cuevas y raíces submarinas ofrecen protección frente a depredadores y contaminación.',
+    image: '/images/real-ajolotes/ajolote-real-5.jpg',
+  },
+  {
+    title: 'Diversidad local',
+    description: 'La cuenca de Xochimilco alberga variedad de plantas y microhábitats esenciales.',
+    image: '/images/real-ajolotes/ajolote-real-6.jpg',
+  },
+  {
+    title: 'Rincones históricos',
+    description: 'Las chinampas son parte del paisaje cultural que favorece la vida acuática.',
+    image: '/images/real-ajolotes/ajolote-real-7.jpg',
   },
 ]
 
@@ -280,16 +300,23 @@ function HomePage() {
           <Swiper modules={[Autoplay, Pagination]} spaceBetween={24} slidesPerView={1} pagination={{ clickable: true }} autoplay={{ delay: 4000 }} className="rounded-[2rem] bg-pastelWhite p-8 shadow-soft">
             {testimonials.map((testimonial) => (
               <SwiperSlide key={testimonial.name} className="rounded-[2rem]">
-                <div className="grid gap-8 lg:grid-cols-[140px_minmax(0,1fr)] lg:items-center">
-                  <div className="flex h-36 w-36 items-center justify-center rounded-full bg-pastelGreen/20 text-3xl text-pastelGreen">{testimonial.name[0]}</div>
-                  <div>
-                    <div className="flex items-center gap-2 text-pastelGreen">
-                      {Array.from({ length: testimonial.stars }).map((_, index) => (
-                        <FaStar key={index} />
-                      ))}
+                <div className="flex gap-6 rounded-2xl bg-pastelWhite p-6 shadow-soft">
+                  <div className="flex-shrink-0">
+                    <img src="/images/testimonial-avatar.svg" alt={testimonial.name} className="h-20 w-20 rounded-full object-cover" />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h3 className="text-lg font-bold text-pastelText">{testimonial.name}</h3>
+                        <div className="flex items-center gap-1 text-pastelGreen mt-1">
+                          {Array.from({ length: testimonial.stars }).map((_, index) => (
+                            <FaStar key={index} />
+                          ))}
+                        </div>
+                      </div>
+                      <FaQuoteLeft className="text-3xl text-pastelPink/80" />
                     </div>
-                    <h3 className="mt-4 text-2xl font-semibold text-pastelText">{testimonial.name}</h3>
-                    <p className="mt-3 text-pastelText/75">{testimonial.text}</p>
+                    <p className="mt-4 text-pastelText/75 italic">“{testimonial.text}”</p>
                   </div>
                 </div>
               </SwiperSlide>
