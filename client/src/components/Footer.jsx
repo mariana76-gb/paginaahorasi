@@ -32,10 +32,10 @@ function Footer() {
         <div>
           <h4 className="mb-4 text-lg font-semibold text-pastelGreen">Síguenos</h4>
           <div className="flex flex-wrap gap-3">
-            <a href="https://www.instagram.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-2xl bg-pastelGreen/10 px-4 py-2 text-sm text-pastelText transition hover:bg-pastelGreen/15">
+            <a href="https://www.instagram.com/tequio.run?igsh=MWt3YXZhMXZ5anU0cA%3D%3D&wa_status_inline=true" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-2xl bg-pastelGreen/10 px-4 py-2 text-sm text-pastelText transition hover:bg-pastelGreen/15">
               <Instagram className="h-4 w-4" /> Instagram
             </a>
-            <a href="https://www.facebook.com" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-2xl bg-pastelGreen/10 px-4 py-2 text-sm text-pastelText transition hover:bg-pastelGreen/15">
+            <a href="https://www.facebook.com/santuarioajolote?mibextid=wwXIfr&mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-2xl bg-pastelGreen/10 px-4 py-2 text-sm text-pastelText transition hover:bg-pastelGreen/15">
               <Facebook className="h-4 w-4" /> Facebook
             </a>
           </div>
