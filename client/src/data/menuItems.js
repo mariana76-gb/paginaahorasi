@@ -7,4 +7,5 @@ export const menuItems = [
   { id: 'habitat', label: 'Hábitat' },
   { id: 'galeria', label: 'Galería' },
   { id: 'testimonios', label: 'Testimonios' },
+  { id: 'contacto', label: 'Contacto' },
 ]
