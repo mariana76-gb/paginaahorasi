@@ -133,7 +133,7 @@ function HomePage() {
           </div>
 
           <div className="mx-auto w-full max-w-2xl rounded-[2rem] border border-pastelGreen/20 bg-pastelWhite p-4 shadow-soft backdrop-blur-xl lg:p-6">
-            <img src="/images/ajolote-hero.svg" alt="Ilustración de ajolote" className="h-full w-full rounded-[1.75rem] object-cover" />
+            <img src="/images/ajolote-hero-real.jpg" alt="Ilustración de ajolote" className="h-full w-full rounded-[1.75rem] object-cover" />
           </div>
         </div>
       </section>
