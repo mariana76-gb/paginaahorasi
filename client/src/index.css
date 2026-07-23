@@ -13,8 +13,9 @@ html {
 body {
   margin: 0;
   font-family: 'Inter', system-ui, sans-serif;
-  background: radial-gradient(circle at top, #FFFFFF 0%, #F8F4F2 55%, #F3E9EB 100%);
-  color: #415445;
+  background: radial-gradient(circle at top, #FFFFFF 0%, #FFFBF9 55%, #FFF1F4 100%);
+  color: #0F172A;
+  font-weight: 600;
 }
 
 * {
@@ -28,5 +29,9 @@ textarea {
 }
 
 ::selection {
-  background-color: rgba(167, 231, 224, 0.35);
+  background-color: rgba(225, 29, 72, 0.18);
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 800;
 }
