@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FaFish, FaLeaf, FaWater, FaStar, FaQuoteLeft } from 'react-icons/fa'
+import { FaFish, FaLeaf, FaLink, FaStar, FaUsers, FaWater, FaQuoteLeft } from 'react-icons/fa'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
@@ -45,6 +45,52 @@ const factCards = [
   },
 ]
 
+const missionCards = [
+  {
+    title: 'Misión',
+    description: 'Generar conciencia y apoyar la conservación del ajolote mexicano mediante información accesible y acciones comunitarias.',
+    icon: 'leaf',
+  },
+  {
+    title: 'Visión',
+    description: 'Ser un referente educativo y de apoyo para proteger el ecosistema de Xochimilco y crear una comunidad comprometida.',
+    icon: 'water',
+  },
+]
+
+const serviceCards = [
+  {
+    title: 'Educación ambiental',
+    description: 'Material informativo para aprender sobre el ajolote y sus necesidades.',
+    icon: 'leaf',
+  },
+  {
+    title: 'Conservación',
+    description: 'Promoción de prácticas que ayudan a mantener los canales y chinampas saludables.',
+    icon: 'water',
+  },
+  {
+    title: 'Alianzas',
+    description: 'Trabajo conjunto con grupos locales y organizaciones que protegen al ajolote.',
+    icon: 'fish',
+  },
+]
+
+const partnerItems = [
+  {
+    name: 'Santuario Ajolote',
+    description: 'Aliado clave en la difusión y protección del ajolote en la CDMX.',
+  },
+  {
+    name: 'Tequio Run',
+    description: 'Comunidad que apoya proyectos ambientales y de limpieza de canales.',
+  },
+  {
+    name: 'Voluntariado local',
+    description: 'Equipo de personas comprometidas con la conservación del hábitat.',
+  },
+]
+
 const habitatItems = [
   {
     icon: 'water',
@@ -60,6 +106,52 @@ const habitatItems = [
     icon: 'fish',
     title: 'Comunidad frágil',
     description: 'La conservación del área protege a muchas especies aliadas del ajolote.',
+  },
+]
+
+const missionCards = [
+  {
+    title: 'Misión',
+    description: 'Generar conciencia y apoyar la conservación del ajolote ayudando a proteger su hábitat natural.',
+    icon: 'leaf',
+  },
+  {
+    title: 'Visión',
+    description: 'Ser un espacio educativo de referencia que conecte a personas con la cultura y conservación del ajolote.',
+    icon: 'water',
+  },
+]
+
+const serviceCards = [
+  {
+    title: 'Educación ambiental',
+    description: 'Recursos y guías para aprender sobre el ajolote y su ecosistema.',
+    icon: 'leaf',
+  },
+  {
+    title: 'Conservación',
+    description: 'Promoción de prácticas que protegen canales y chinampas.',
+    icon: 'water',
+  },
+  {
+    title: 'Alianzas',
+    description: 'Colaboraciones con grupos y comunidades que cuidan el ajolote.',
+    icon: 'fish',
+  },
+]
+
+const partnerItems = [
+  {
+    name: 'Santuario Ajolote',
+    description: 'Aliado local para la protección del ajolote en la CDMX.',
+  },
+  {
+    name: 'Tequio Run',
+    description: 'Comunidad que apoya proyectos ambientales y acciones comunitarias.',
+  },
+  {
+    name: 'Voluntariado local',
+    description: 'Grupo de personas comprometidas con la limpieza y la restauración de hábitats.',
   },
 ]
 
@@ -134,6 +226,8 @@ function HomePage() {
   const renderIcon = (icon) => {
     if (icon === 'water') return <FaWater className="h-6 w-6 text-pastelGreen" />
     if (icon === 'leaf') return <FaLeaf className="h-6 w-6 text-pastelGreen" />
+    if (icon === 'users') return <FaUsers className="h-6 w-6 text-pastelGreen" />
+    if (icon === 'link') return <FaLink className="h-6 w-6 text-pastelGreen" />
     return <FaFish className="h-6 w-6 text-pastelGreen" />
   }
 
@@ -147,8 +241,8 @@ function HomePage() {
             <h1 className="text-4xl font-extrabold leading-tight text-pastelText sm:text-6xl">Conoce al ajolote mexicano y por qué merece protección.</h1>
             <p className="max-w-xl text-lg leading-8 text-pastelText/80">Explora sus increíbles capacidades de regeneración, su hábitat natural y las acciones que podemos tomar para protegerlo. Una página creada para celebrar y aprender sobre este anfibio emblemático.</p>
             <div className="flex flex-col gap-4 sm:flex-row">
-              <a href="#datos" className="inline-flex items-center justify-center rounded-full bg-pastelGreen px-8 py-4 text-sm font-semibold text-pastelWhite transition hover:bg-pastelGreen/90">Ver datos</a>
-              <a href="#contacto" className="inline-flex items-center justify-center rounded-full border border-pastelGreen/40 bg-pastelWhite/70 px-8 py-4 text-sm font-semibold text-pastelText transition hover:bg-pastelPink/60">Ayuda al ajolote</a>
+              <a href="#mision" className="inline-flex items-center justify-center rounded-full bg-pastelGreen px-8 py-4 text-sm font-semibold text-pastelWhite transition hover:bg-pastelGreen/90">Ver misión</a>
+              <a href="#aliados" className="inline-flex items-center justify-center rounded-full border border-pastelGreen/40 bg-pastelWhite/70 px-8 py-4 text-sm font-semibold text-pastelText transition hover:bg-pastelPink/60">Ver aliados</a>
             </div>
           </div>
 
@@ -179,6 +273,66 @@ function HomePage() {
                 </div>
               </div>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section id="mision" className="px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 text-center">
+            <span className="text-sm uppercase tracking-[0.35em] text-pastelGreen">Misión y visión</span>
+            <h2 className="mt-4 text-4xl font-bold text-pastelText">Qué buscamos y hacia dónde vamos</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-pastelText/75">Apoyamos la protección del ajolote y su hábitat con información, proyectos y colaboración comunitaria.</p>
+          </div>
+          <div className="grid gap-8 lg:grid-cols-2">
+            {missionCards.map((item) => (
+              <div key={item.title} className="rounded-[2rem] border border-pastelGreen/20 bg-pastelWhite p-8 shadow-soft">
+                <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-pastelGreen/10 text-pastelGreen">
+                  {renderIcon(item.icon)}
+                </div>
+                <h3 className="mt-6 text-2xl font-semibold text-pastelText">{item.title}</h3>
+                <p className="mt-4 text-pastelText/75">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="servicios" className="bg-pastelWhite/80 px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 text-center">
+            <span className="text-sm uppercase tracking-[0.35em] text-pastelGreen">Servicios</span>
+            <h2 className="mt-4 text-4xl font-bold text-pastelText">Servicios y recursos</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-pastelText/75">Ofrecemos apoyo educativo, acciones de conservación y alianzas con comunidades.</p>
+          </div>
+          <div className="grid gap-8 lg:grid-cols-3">
+            {serviceCards.map((item) => (
+              <div key={item.title} className="rounded-[2rem] border border-pastelGreen/20 bg-pastelWhite p-8 shadow-soft">
+                <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-pastelGreen/10 text-pastelGreen">
+                  {renderIcon(item.icon)}
+                </div>
+                <h3 className="mt-6 text-2xl font-semibold text-pastelText">{item.title}</h3>
+                <p className="mt-4 text-pastelText/75">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="aliados" className="px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 text-center">
+            <span className="text-sm uppercase tracking-[0.35em] text-pastelGreen">Clientes y aliados</span>
+            <h2 className="mt-4 text-4xl font-bold text-pastelText">Nuestro apoyo estratégico</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-pastelText/75">Trabajamos con aliados que comparten el compromiso de proteger al ajolote y su ecosistema.</p>
+          </div>
+          <div className="grid gap-8 lg:grid-cols-3">
+            {partnerItems.map((partner) => (
+              <div key={partner.name} className="rounded-[2rem] border border-pastelGreen/20 bg-pastelWhite p-8 shadow-soft">
+                <h3 className="text-2xl font-semibold text-pastelText">{partner.name}</h3>
+                <p className="mt-4 text-pastelText/75">{partner.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
